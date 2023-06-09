@@ -41,7 +41,7 @@ const doMagic = (settings) => {
                 if(!settings['remove_shorts']) {
                     changeStyleAndMove(miniature);
                 } else {
-                    miniature.remove();
+                    miniature.style.display = 'none';
                     return;
                 }
             }
@@ -58,7 +58,7 @@ const doMagic = (settings) => {
                     changeStyleAndMove(miniature);
                 }
                 if(checkIfArrayContains(settings['remove_stream_if_youtuber'], ytberName)) {
-                    miniature.remove();
+                    miniature.style.display = 'none';
                     return;
                 }
             }
@@ -80,14 +80,14 @@ const doMagic = (settings) => {
             if(settings['remove_by_title_if_youtuber'].hasOwnProperty(ytberName)) {
                 // Check by title
                 if(checkIfArrayContains(settings['remove_by_title_if_youtuber'][ytberName], videoTitle)) {
-                    miniature.remove();
+                    miniature.style.display = 'none';
                     return;
                 }
             }
 
             // Check if ignored
             if(checkIfArrayContains(ignoredVideos, miniature.querySelector('#thumbnail').href.split('&')[0].replace('https://www.youtube.com/watch?v=', ''))) {
-                miniature.remove();
+                miniature.style.display = 'none';
                 return;
             }
 
