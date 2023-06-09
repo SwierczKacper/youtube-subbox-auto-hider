@@ -1,0 +1,31 @@
+{
+    "hide_by_title": [
+        "(Business Tour)",
+    ],
+    "hide_by_title_if_youtuber": {
+        "Mestoslaw": ["mamtemat"],
+        "tvgrypl": [""]
+    },
+    "remove_by_title_if_youtuber":
+    {
+        "Vsauce": ["#shorts"],
+    },
+    "hide_stream_if_youtuber": [
+        "UCvKfGIypN4J6zbvrOxpc7Z2Q"
+    ],
+    "remove_stream_if_youtuber": [
+        "MarcinOsman",
+        "Astrofaza",
+        "WyłącznieNaukowyBełkot", "UCBcXA_jyGkSUU6is4xS6S4g"
+    ],
+    "auto_watchlist_by_title": [
+        "cyberpunk",
+        "gta v", "gta 5",
+        "gta vi", "gta 6"
+    ],
+    "auto_watchlist_by_title_if_youtuber": {
+        "BoditXD": ["Człowiek vs AI"],
+    }
+    "remove_premieres": true,
+    "remove_shorts": true
+}

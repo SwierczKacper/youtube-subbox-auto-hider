@@ -1,0 +1,32 @@
+{
+  "name": "Youtube Sub Box Auto Hider",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "Youtube Sub Box Auto Hider",
+  "permissions": [
+    "storage",
+    "unlimitedStorage",  
+    "browsingData",
+    "contextMenus"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [ "settings.json"],
+      "matches": ["*://www.youtube.com/*", "*://youtube.com/*"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Youtube Sub Box Auto Hider",
+    "default_popup": "options.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*", "*://youtube.com/*"],
+      "js": ["scripts.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
