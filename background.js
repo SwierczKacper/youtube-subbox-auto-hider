@@ -34,15 +34,26 @@ const extractVideoId = (url) => {
     return url.split('&')[0].replace('https://www.youtube.com/watch?v=', '');
 }
 
-chrome.contextMenus.create({
-    id: 'ignore-video',
-    title: 'SubBox: Ignore Video',
-    contexts: ['link']
+chrome.contextMenus.removeAll(function() {
+    chrome.contextMenus.create({
+        id: 'ignorevideo',
+        title: 'SubBox: Ignore Video',
+        contexts: ['link']
+    });
 });
 
 const contextClick = (info, tab) => {
     ignoreVideo(info);
 }
 
-console.log('test123213211');
 chrome.contextMenus.onClicked.addListener(contextClick);
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.method === "getSettings") {
+        fetch(chrome.runtime.getURL("settings.json"))
+            .then(response => response.json())
+            .then(json => sendResponse(json))
+            .catch(error => console.log(error));
+        return true; // Keep the message channel open until sendResponse is called
+    }
+});

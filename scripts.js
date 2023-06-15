@@ -118,16 +118,24 @@ const doMagicLoop = () => {
                 if(document.querySelectorAll('ytd-rich-grid-row').length >= 1) { // Check if there's at least 1 row with videos
                     console.log('Found!');
                     shouldPerformMagic = false;
-                    const xhr = new XMLHttpRequest;
-                    xhr.open("GET", chrome.runtime.getURL("settings.json"));
-                    xhr.onreadystatechange = function() {
-                        if (this.readyState == 4) {
-                            coreSettings = JSON.parse(xhr.responseText);
-                            console.log('settings', coreSettings);
-                            doMagic(coreSettings);
-                        }
-                    };
-                    xhr.send();
+
+                    chrome.runtime.sendMessage({method: "getSettings"}, function(response) {
+                        coreSettings = response;
+                        console.log('settings', coreSettings);
+                        doMagic(coreSettings);
+                    });
+
+
+                    // const xhr = new XMLHttpRequest;
+                    // xhr.open("GET", chrome.runtime.getURL("settings.json"));
+                    // xhr.onreadystatechange = function() {
+                    //     if (this.readyState == 4) {
+                    //         coreSettings = JSON.parse(xhr.responseText);
+                    //         console.log('settings', coreSettings);
+                    //         doMagic(coreSettings);
+                    //     }
+                    // };
+                    // xhr.send();
                 }
             }
             doMagicLoop();
